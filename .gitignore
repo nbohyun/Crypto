@@ -1,0 +1,20 @@
+# Compiled Object files
+*.o
+*.obj
+
+# Executables
+monitor_server
+sensor_client
+
+# Log files
+sensor_log.txt
+alert_log.txt
+
+# Editor backup files
+*~
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
