@@ -705,18 +705,6 @@ int verify_hmac(const SensorPacket *packet) {
 | 재전송 공격 | 이전 패킷 재전송 | 타임스탬프 확인 가능 |
 | 위조 센서 | 가짜 센서 데이터 전송 | SECRET_KEY 없으면 HMAC 생성 불가 |
 
-**한계:**
-- 키 분배 문제: 클라이언트와 서버가 동일한 SECRET_KEY를 공유해야 함
-- 재전송 공격: 현재 구현에서는 타임스탬프만 기록 (별도 검증 로직 필요)
-- 기밀성 미제공: HMAC은 무결성만 보장 (암호화 아님)
-
-### 개선 방향
-
-1. **키 교환**: Diffie-Hellman 등 안전한 키 교환 프로토콜 사용
-2. **타임스탬프 검증**: 일정 시간 이상 된 패킷 거부
-3. **암호화**: AES 등으로 데이터 암호화 추가
-4. **인증**: TLS/SSL 사용하여 서버-클라이언트 상호 인증
-
 ## Makefile 타겟
 
 ```bash
@@ -741,12 +729,6 @@ make help         # 도움말 표시
   - `-std=c11`: C11 표준 준수
   - `-lssl -lcrypto`: OpenSSL 라이브러리 링크
 
-## 참고 자료
-
-- [OpenSSL Documentation](https://www.openssl.org/docs/)
-- [HMAC RFC 2104](https://tools.ietf.org/html/rfc2104)
-- [SHA-256 Specification](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf)
-
 ## 라이선스
 
 Educational/Research purposes only.
@@ -754,8 +736,3 @@ Educational/Research purposes only.
 ## 기여 및 문의
 
 이 프로젝트는 암호화프로그래밍 수업의 기말 프로젝트로 제작되었습니다.
-
----
-
-**프로젝트 작성일**: 2024년 11월 22일
-**버전**: 1.0
